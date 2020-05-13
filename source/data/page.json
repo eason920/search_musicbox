@@ -1,0 +1,20 @@
+{
+	"list": [
+		{
+			"teacher_name": "JennyWang",
+			"teacher_pic": "./images/teacher/01.png",
+			"stars": "3",
+			"date": "2020/03/21",
+			"time": "9:00",
+			"level": "B1",
+			"sort": "生活會話教室",
+			"title_ch": "台美有望加深太空合作計畫",
+			"title_en": "Taiwan and US May Deepen Space Collaboration",
+			"sets": "5",
+			"joined": "3",
+			"status": "join",
+			"link": "https://gnn.gamer.com.tw/3/182593.html",
+			"text": ""
+		}
+	]
+}

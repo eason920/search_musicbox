@@ -1,0 +1,97 @@
+#blockSimple
+	padding-top: 18px
+
+.simple-underline
+	padding-bottom: 12px
+	border-bottom: solid 1px #ddd
+	margin-bottom: 20px
+
+#simpleList
+	display: flex
+	margin:
+		bottom: 8px
+
+.simple-list-item
+	user-select: none
+	display: flex
+	font:
+		size: 0
+	&:last-child
+		.simple-border
+			display: none
+	
+.simple-border
+	position: relative
+	height: 100%
+	&:before
+		content: ''
+		position: absolute
+		left: 50%
+		width: 1px
+		height: 100%
+		top: 0
+		background:
+			color: $c-gray2
+
+.simple-title
+	cursor: pointer
+	color: $c-magenta
+	font:
+		size: 1rem
+	&.active
+		cursor: default
+		text:
+			decoration: underline
+// -----------------------------------
+#simpleContent
+	width: 100%
+
+.simple-content-item
+	display: none
+	position: relative
+	&:first-child
+		display: block
+
+// -----------------------------------
+.input-list
+	overflow: hidden
+	font:
+		size: 1rem
+	margin-bottom: 10px
+	&:last-child
+		margin-bottom: 0
+
+.input-item
+	float: left
+	display: flex
+	align-items: center
+	height: 30px
+	width: 20%
+	&:nth-child(5n)
+		margin: 0
+	input
+		-webkit-appearance: radio
+		margin: 0 5px 0 0
+		&:checked + label
+			color: #c54159
+	label
+		cursor: pointer
+		user-select: none
+
+
+.sub-title
+	color: #9b9b9b
+
+.is-class
+	.input-item
+		width: 33.33%
+		&:nth-child(3n)
+			margin: 0
+
+@media screen and (max-width: 1440px)
+	.simple-border
+		width: 37px
+
+@media screen and (min-width: 1441px)
+	.simple-border
+		width: 44px

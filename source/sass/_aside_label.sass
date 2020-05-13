@@ -1,0 +1,34 @@
+#blockLabel
+	background-color: $c-gray4
+	padding:
+		top: 20px
+
+.label-list
+	display: flex
+
+.label-item
+	font:
+		size: 1rem
+	width: calc( 100% / 6 )
+	text:
+		align: center
+		decoration: none
+	line-height: 37px
+	border-radius: 8px 8px 0 0
+	cursor: pointer
+	color: $c-gray3
+	&.active
+		color: $c-magenta
+		cursor: default
+		background:
+			color: $c-gray-aside
+		font:
+			weight: bold
+
+@media screen and (max-width: 1440px)
+	#blockLabel
+		
+
+@media screen and (min-width: 1441px)
+	#blockLabel
+		

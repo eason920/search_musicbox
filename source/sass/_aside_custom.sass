@@ -1,0 +1,113 @@
+.custom-item
+	position: relative
+	min-height: 32px
+	margin:
+		bottom: 10px
+
+.borderbox
+	display: flex
+	align-items: center
+	height: 32px
+	border:
+		radius: 16px
+	border: solid 1px #999
+	background-color: #fff
+	padding:
+		left: 16px
+
+.custom-text
+	border: none
+	-webkit-appearance: none
+	width: calc( 100% - 20px)
+	font:
+		size: 1.0625rem
+		family: PingFangTC-Regular, Microsoft JhengHei, sans-serif
+	color: $c-gray3
+	&:focus
+		outline: none
+	&::placeholder
+		opacity: .5
+
+.custom-left
+	display: flex
+	align-items: center
+	float: left
+	margin-top: 5px
+
+.custom-checkbox
+	-webkit-appearance: checkbox
+	width: 17px
+	height: 17px
+	margin-right: 5px
+
+.custom-label
+	user-select: none
+	font-size: 1.0626rem
+
+//
+.custom-right
+	float: right
+	display: flex
+	height: 32px
+	align-items: center
+
+.submit
+	display: flex
+	justify-content: flex-end
+	margin-top: -24px
+	float: right
+	position: relative
+	z-index: 1
+
+.submit-btn
+	line-height: 28px
+	border-radius: 16px
+	font-size: 1.0625rem
+	padding: 0 20px
+	user-select: none
+	cursor: pointer
+	margin-left: 8px
+
+.is-type1
+	background-color: $c-gray1
+	color: #fff
+	transition: .3s
+	&:hover
+		background-color: $c-gray3
+
+.is-type2
+	background-color: #fff
+	color: $c-gray3
+	border: solid 1px $c-gray3
+	transition: .3s
+	&:hover
+		background-color: $c-gray3
+		color: #fff
+
+// -----------------------------------
+.datepicker
+	padding: 0
+
+.form-control
+	font-size: 1.0625rem
+	border: none
+	-webkit-appearance: none
+	margin-left: 5px
+	text-align: center
+	color: #4a4a4a
+	&:focus
+		outline: none
+
+.datepicker-dropdown
+	transform: translate(7px, 8px)
+	&:after,&:before
+		left: 50%!important
+		transform: translateX(-20px)!important
+
+@media screen and (max-width: 1440px)
+	.form-control
+		width: 145px
+
+@media screen and (min-width: 1441px)
+	.form-control
+		width: 166px

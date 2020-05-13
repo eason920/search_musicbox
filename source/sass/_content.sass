@@ -1,0 +1,226 @@
+#content
+	background:
+		repeat: no-repeat
+		size: cover
+		position: center
+	min-width: $w-aside
+	height: 100vh
+
+.content-inner
+	height: 100%
+	display: flex
+	flex-direction: column
+	overflow: hidden
+	background:
+		color: rgba( 255, 255, 255 , .9)
+
+.content-main
+	height: calc(100% - #{$h-cta})
+	position: relative
+
+.btn-cta
+	box-shadow: 0 0 5px rgba(0,0,0,.5)
+	line-height: $h-cta
+	font:
+		size: 2.8rem
+		weight: bold
+	color: #fff
+	cursor: pointer
+	text-align: center
+	z-index: 1
+
+// -----------------------------------
+// -----------------------------------
+$m: 15px
+.c-top
+	border-bottom: solid 1px #bbb
+	margin:
+		bottom: 18px
+
+.c-box
+	display: flex
+	clear: both
+
+.c-left
+	width: calc( 100% - #{$w-snapshot} - #{$m} )
+	margin:
+		right: $m
+
+.c-right
+	width: $w-snapshot
+	height: 141px
+	background:
+		size: cover
+		position: center
+	// flex-direction: column
+	// justify-content: center
+	// display: flex
+
+.c-snapshot
+	width: 100%
+	height: $w-snapshot
+	background:
+		position: center
+		size: cover
+	border-radius: 50%
+	overflow: hidden
+	margin:
+		bottom: 10px
+
+.c-teacher
+	width: 100%
+	text-align: center
+	color: #000
+	font:
+		size: 1.25rem
+
+.c-time
+	color: $c-gray1
+	font:
+		size: 1.25rem
+		weight: bold
+	position: absolute
+	top: $p-aside
+	right: $p-aside
+
+.c-sort
+	font:
+		size: 1.5rem
+	color: #fff
+	float: left
+	padding: 8px
+	margin:
+		bottom: 10px
+
+.c-ch
+	clear: left
+	font:
+		size: 1.8rem
+		weight: bold
+	color: #000
+	line-height: 1.2
+	@extend %row2
+	margin-bottom: .5rem
+
+.c-en
+	font:
+		size: 1.6rem
+	line-height: 1.2
+
+.c-stars
+	display: flex
+	float: left
+	margin:
+		top: 8px
+		right: 8px
+
+// -----------------------------------
+.c-middle
+	font:
+		size: 1.5rem
+	line-height: 1.5
+
+// -----------------------------------
+.lanbox
+	display: flex
+	align-items: flex-end
+
+.lanbox-art
+	position: relative
+	padding:
+		right: calc( 75px + 25px )
+
+.lanbox-btn
+	position: absolute
+	bottom: $p-aside
+	right: calc( #{$p-aside} + 15px )
+
+.lanbox-icon
+	width: 75px
+	height: 75px
+	border-radius: 50%
+	position: relative
+	border: 
+		style: solid
+		width: 1px
+	box-shadow: 0 0 8px 0 rgba(0,0,0,.25)
+	cursor: pointer
+	&:before
+		content: ''
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-10px, -50%)
+		border:
+			style: solid 
+			width: 20px 0 20px 27px
+	&.active
+		&:before, &:after
+			border: none
+			width: 10px
+			height: 35px
+			transform: translate( -13px, -50%)
+
+		&:after
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate( 3px, -50%)
+
+.en
+	color: #333
+	font-size: 1.375rem
+	line-height: 1.5
+
+.ch
+	color: #666
+	font-size: 1.0625rem
+	line-height: 1.6
+	margin: 3px 0 27px
+
+// -----------------------------------
+#content.is-empty
+	.content-inner
+		height: 100%
+		width: 100%
+		display: flex
+		align-content: center
+		justify-content: center
+
+.empty
+	color: #777
+	text-align: center
+	font:
+		size: 1.5rem
+	line-height: 1.5
+	transform: translateY(-50px)
+	&:nth-child(2)
+		font:
+			size: 2rem
+			weight: bold
+			
+@media screen and (max-width: 767px)
+	#content
+		display: none
+
+@media screen and (min-width: 768px)
+	#content
+		float: right
+
+@media screen and (max-width: 1440px) and (min-width: 768px)
+	#content
+		width: calc( 100% - #{$w-aside2})
+		padding: $p-aside2
+
+@media screen and (max-width: 1440px)
+	.content-main
+		padding: $p-aside
+
+@media screen and (min-width: 1441px)
+	#content
+		width: calc( 100% - #{$w-aside} )
+		padding: $p-aside
+
+	.content-main
+		padding: $p-aside

@@ -1,0 +1,31 @@
+$pp0: is-empty , #fff
+$pp1: is-c1, $c01
+$pp2: is-c2, $c02
+$pp3: is-c3, $c03
+$pp4: is-c4, $c04
+$pp5: is-c5, $c05
+$pp6: is-c6, $c06
+$pp7: is-c7, $c07
+$pp8: is-c8, $c08
+$pp9: is-c9, $c09
+$pp10: is-c10, $c10
+@each $selector, $color in $pp1, $pp2, $pp3, $pp4, $pp5, $pp6, $pp7, $pp8, $pp9, $pp10, $pp0
+	#content.#{$selector}
+		.content-inner
+			box-shadow: 0 0 0 10px #{$color} inset
+
+		.c-sort, .btn-cta
+			background-color: $color
+		
+		.lanbox-icon
+			border-color: $color
+			&:before
+				border-color: transparent transparent transparent #{$color}
+			&.active
+				&:before, &:after
+					background-color: $color
+
+#content.is-empty
+	.content-inner
+		background-color: #fbfbfb
+		box-shadow: 0 0 12px 0 #ddd inset

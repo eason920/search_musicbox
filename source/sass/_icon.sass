@@ -1,0 +1,26 @@
+@import 'compass'
+@import 'x1/*.png'
+@import 'x3/*.png'
+$height: x1-sprite-height(arrow) + x1-sprite-height(calendar) + x1-sprite-height(check) + x1-sprite-height(search) + x1-sprite-height(top)
+@mixin BG($path)
+	@include x3-sprite($path)
+	@include x1-sprite($path)
+	background-size: auto $height
+	width: x1-sprite-width($path)
+	height: x1-sprite-height($path)
+
+.icon-arrow
+	@include BG(arrow)
+
+.icon-calendar
+	@include BG(calendar)
+
+.icon-check
+	@include BG(check)
+	margin-left: 5px
+
+.icon-search
+	@include BG(search)
+
+.icon-top
+	@include BG(top)

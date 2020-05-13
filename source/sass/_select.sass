@@ -1,0 +1,102 @@
+$c-dropdown: #ddd
+$c-dropdown-hover: rgba(0, 0, 0, .5)
+.editor-selbox
+	position: absolute
+	top: 68px
+	left: 252px
+		
+.tmp-select
+	user-select: none
+	position: absolute
+	&.is-tmp2
+		width: 212px
+
+.tmp-select-title
+	position: relative
+	color: $c-gray3
+	font:
+		size: 1.0625rem
+	background:
+		color: #fff
+	line-height: 30px
+	padding: 0 36px 0 15px
+	border-radius: 15px
+	border: solid 1px $c-gray1
+	&.is-hover
+		border: solid 1px #777
+		.icon-arrow
+			transform: rotateX(180deg)
+			transition: transform .5s .5s
+	span
+		@extend %row1
+		display: block
+
+.icon-arrow
+	position: absolute
+	right: 12px
+	top: 10px
+	transform: rotatex(0deg)
+	transition: transform .5s .2s
+
+.tmp-select-dropscro
+	opacity: 0
+	background:
+		color: $c-dropdown
+	border-radius: 5px
+	margin:
+		top: 2px
+	padding:
+		right: 12px
+	// max-height: 50px
+
+.tmp-select-itembox
+	padding: 5px 0
+
+.tmp-select-item
+	padding: 5px 15px
+	font:
+		size: 1.0625rem
+	display: block
+	@extend %row1
+	&:hover
+		color: #fff
+		background:
+			color: $c-dropdown-hover
+
+// -----------------------------------
+$m-select: 10px
+$w-ps-a: 47.5%
+$w-ps-b: 130px
+.ps2_1
+	width: $w-ps-a
+
+.ps2_2, .ps4_2
+	width: calc( 100% - #{$w-ps-a} - #{$m-select} )
+
+.ps5_2
+	width: calc( 100% - #{$w-ps-b} - #{$m-select} )
+
+.ps3_2,
+.ps5_1
+	width: $w-ps-b
+
+.ps6
+	width: calc( 100% - 130px )
+
+//
+.ps2_2, .ps3_2, .ps5_2
+	right: 0
+
+.ps3_1
+	width: 24%
+	margin-right: 2%	
+	left: 0
+
+.ps4_1
+	width: 31%
+	margin-right: 2%
+	left: 26%
+	
+.ps4_2
+	width: 40%
+	right: 0

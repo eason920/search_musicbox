@@ -1,0 +1,226 @@
+#blockList
+	position: relative
+
+#list
+
+#forKeydown
+	position: fixed
+	top: 50%
+	width: 1px
+	height: 0px
+	border: none
+	color: transparent
+	&:focus
+		outline: none
+
+.item
+	position: relative
+	border:
+		radius: 12px
+		style: solid
+		width: 2px
+	background-color: #fff
+	transition: .3s
+	margin:
+		bottom: 10px
+	cursor: pointer
+	display: flex
+	
+		
+	&:last-child
+		margin: 0
+
+.item-img
+	width: 100px
+	background:
+		size: cover
+		position: center
+	border-radius: 10px 0 0 10px
+
+// -----------------------------------
+.box1
+	padding: 10px 12px 22px
+	width: calc( 100% - 105px + 5px)
+	margin:
+		left: -5px
+
+.box
+	overflow: hidden
+	margin:
+		bottom: 7px
+	&:last-child
+		margin: 0
+
+.left
+	float: left
+
+.right
+	float: right
+
+.left, .right
+	display: flex
+	align-items: center
+
+//
+.teacher
+	color: $c-gray1
+	font-size: 1rem
+	margin-right: 8px
+
+.stars
+	display: flex
+	& > *
+		margin-right: 2px
+//
+.date, .time
+	font-size: 1rem
+
+.date
+	color: $c-gray1
+
+.time
+	color: #777
+	font-weight: bold
+	
+//
+.level, .title
+	font:
+		size: 1.1875rem
+		weight: bold
+	color: #000
+
+.level
+	display: inline-block
+	margin-right: 6px
+
+.title
+	@extend %row2
+	line-height: 1.2
+//
+.sort
+	font-size: 1rem
+	margin:
+		right: 8px
+
+.group
+	font:
+		weight: bold
+	display: none
+
+.sets
+	display: flex
+	align-items: flex-end
+
+.item
+	.sets
+		margin-left: 10px
+
+.icon-chair
+	margin-left: 5px
+	&:first-child
+		margin: 0
+
+.item-side
+	border-radius: 10px
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	margin: auto
+	transition: .3s
+	// box-shadow: 0 0 0 5px red inset
+
+.icon-test
+	color: #fff
+	font-size: .9375rem
+	line-height: 21px
+	padding: 0 9px
+	border-radius: 12px 0
+	transition: .3s
+	position: absolute
+	bottom: -2px
+	right: -2px
+	display: flex
+	align-items: center
+	background:
+		color: $c-magenta
+	z-index: 1
+
+// -----------------------------------
+.box2
+	display: flex
+	padding: 11px 0 7px 20px
+	height: 34px
+	margin-top: -6px
+	border-radius: 0 0 5px 5px
+
+.box2-item
+	display: flex
+	align-items: center
+
+.box2-btn
+	color: #fff
+	cursor: pointer
+	font:
+		size: .9375rem
+	padding: 3px 10px
+	border-radius: 10px
+	transition: .3s
+	&:hover
+		background:
+			color: rgba(0,0,0,.5)
+
+.box2-border
+	position: relative
+	height: 100%
+	&:before
+		content: ''
+		position: absolute
+		left: 50%
+		width: 1px
+		height: 100%
+		top: 0
+		background:
+			color: #fff
+
+// -----------------------------------
+.item.is-empty
+	display: flex
+	justify-content: center
+	align-items: center
+	border: none
+	line-height: 150px
+	font:
+		size: 1.5rem
+		weight: bold
+	color: #777
+	cursor: default
+
+// -----------------------------------
+$p1: is-c1, $c01
+$p2: is-c2, $c02
+$p3: is-c3, $c03
+$p4: is-c4, $c04
+$p5: is-c5, $c05
+$p6: is-c6, $c06
+$p7: is-c7, $c07
+$p8: is-c8, $c08
+$p9: is-c9, $c09
+$p10: is-c10, $c10
+@each $selector, $color in $p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9, $p10
+	.item.#{$selector}
+		border-color: #{$color}
+		&.active
+			.item-side
+				box-shadow: 0 0 0 5px #{$color} inset
+		.sort, .group
+			color: #{$color}
+
+@media screen and (max-width: 1440px) and (min-width: 768px)
+	.box2-border
+		width: 64px
+
+@media screen and (min-width: 1441px)
+	.box2-border
+		width: 72px

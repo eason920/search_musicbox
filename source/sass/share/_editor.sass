@@ -1,0 +1,146 @@
+$color01-d: red
+$color01: green
+.editor
+	top: calc( 100% - 40px )
+	background: #fff
+	position: absolute
+	left: 0
+	right: 0
+	bottom: 0
+	transition: top .2s .2s
+	overflow: hidden
+	box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2)
+	// position: relative
+	&.is-open
+		// v default height
+		top: calc( 100% - 329px )
+		transition: top .2s
+		.editor-control
+			height: 8px
+			transition: .2s .2s
+		.editor-submit
+			opacity: 1
+	&.is-moving
+		transition: none
+
+.editor-control
+	height: 0
+	width: 100%
+	background: $color01-d
+	cursor: row-resize
+	transition: .2s
+	position: relative
+	overflow: hidden
+
+	&:after, &:before
+		content: ''
+		display: inline-block
+		width: 4px
+		height: 4px
+		margin-top: -4px
+		position: absolute
+		top: 6px
+		left: 50%
+
+	&:before
+		border-left: solid 4px #fff
+		border-right: solid 4px #fff
+		margin:
+			left: -10px
+	&:after
+		border-right: solid 4px #fff
+		margin:
+			left: 2px
+			
+.editor-bar
+	user-select: none
+	line-height: 40px
+	cursor: pointer
+	color: #fff
+	background:
+		color: $color01
+	font:
+		size: 20px
+		weight: bold
+	text:
+		align: center
+
+	.arrow-white
+		display: inline-block
+		margin:
+			left: 5px
+		transform: rotateX(180deg)
+		transition: transform .5s .4s
+		&.is-rotate
+			transform: rotateX(0deg)
+			transition: transform .5s .4s
+
+// ====================================
+// == SELECTOR
+// ====================================
+.editor-select
+	// display: none
+	position: absolute
+	top: 15px
+	&.is-select2
+		left: 100px
+
+
+// -----------------------------------
+// -- BUTTON
+// -----------------------------------
+.editor-time
+	position: absolute
+	top: 71px
+	right: 23px
+	font:
+		size: 13px
+	text:
+		align: right
+
+.editor-hhrr
+	margin:
+		bottom: 3px
+
+.editor-submit
+	position: absolute
+	font:
+		size: 17px
+		family: PingFangTC-Regular, Microsoft JhengHei, sans-serif
+	color: #fff
+	background:
+		color: $color01
+	border-radius: 30pc
+	line-height: 32px
+	padding: 0 27px
+	bottom: 29px
+	right: 24px
+	border: none
+	letter-spacing: 3px
+	cursor: pointer
+	transition: .3s
+	opacity: 0
+	&:hover
+		background:
+			color: $color01-d
+			transition: .3s
+
+// ====================================
+// == CKEDITOR FIX
+// ====================================
+#cke_editor
+	padding: 15px
+
+.cke_chrome
+	border: none!important
+
+#cke_1_resizer
+	display: none
+
+#cke_1_contents
+	border: solid 1px #d1d1d1
+
+#cke_1_bottom
+	padding:
+		top: 15px
+		bottom: 15px
