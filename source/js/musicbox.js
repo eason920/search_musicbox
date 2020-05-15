@@ -7,25 +7,12 @@ $(function(){
 		//
 		const i = $(this).index();
 		let marginTop = '';
-		switch(true){
-			case i > 0 && i < max:
-				// i = 1 & 2
-				$('.submit-btn.is-type2, .submit').hide();
-				break;
-			case i == max:
-				// i = 3
-				$('.submit-btn.is-type2, .submit').show();
-				marginTop = '-40px';
-				break;
-			default:
-				// i = 0
-				$('.submit-btn.is-type2').hide();
-				$('.submit').show();
-				marginTop = '-24px';
-				setTimeout(function(){
-					$('.submit-btn.is-type1').click();
-				});
-		}
+		if( i == max ){
+			$('.submit-btn').show();
+			marginTop = '-40px';
+		}else{
+			$('.submit-btn').hide();
+		};
 		$('.submit').css({marginTop});
 		$('.simple-content-item').hide();
 		$('.simple-content-item').eq(i).show();
@@ -83,10 +70,6 @@ $(function(){
 		}
 
 		$('.item').removeClass('active').eq(itemIndex).addClass('active');
-
-		//
-		const className = $('.item').eq(itemIndex).attr('class').replace( 'item ', '' );
-		$('#content').attr('class', className);
 	})
 
 
@@ -134,7 +117,6 @@ $(function(){
 		$(this).toggleClass('active');
 	});
 
-	new PerfectScrollbar('.lanbox-art');
 	new PerfectScrollbar('aside');
 
 	// ====================================
@@ -142,12 +124,10 @@ $(function(){
 	// ====================================
 	// $('.simple-list-item').eq(3).click();
 
-	const customText1 = $('.ps5_1 .tmp-select-title span').text();
 	const customText2 = $('.ps5_2 .tmp-select-title span').text();
 	$('.is-type2').click(function(){
 		$('#customContent .custom-text').val('');
 		$('.form-control').val('YYYY / MM / DD');
-		$('.ps5_1 .tmp-select-title span').text(customText1).removeAttr('data-value');
 		$('.ps5_2 .tmp-select-title span').text(customText2).removeAttr('data-value');
 		const $check = $('.custom-checkbox');
 		$check.is(':checked') ? $check.click() : null;

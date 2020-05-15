@@ -22,14 +22,14 @@ html(lang="en")
 	head
 		meta(charset="UTF-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title search Article
-		link(href='./css/article.css', rel='stylesheet', type='text/css')
+		title search Musicbox
+		link(href='./css/musicbox.css', rel='stylesheet', type='text/css')
 		link(href='../assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css', rel='stylesheet', type='text/css')
 		link(href= '../assets/plugins/datepicker_bs/datepicker.css', rel='stylesheet', type='text/css')
 		//-
 		script(src='../assets/plugins/jquery/jquery-1.12.4-min.js')
 		script(src='./js/select.js')
-		script(src='./js/article.js')
+		script(src='./js/musicbox.js')
 		script(src='../assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js')
 		script(src='../assets/plugins/datepicker_bs/bootstrap-datepicker.js')
 		
@@ -39,68 +39,47 @@ html(lang="en")
 				section#blockLabel
 					.label-list
 						a.label-item(href='') 課程
-						.label-item.active(href='') 文章
-						//- a.label-item(href='') 專欄
-						//- a.label-item(href='') 部落格
+						a.label-item(href='') 文章
+						a.label-item(href='') 專欄
+						a.label-item(href='') 部落格
+						a.label-item(href='') 童話
+						.label-item.active(href='') 音樂
 						//- a.label-item(href='') 影片
-						//- a.label-item(href='') 音樂
 				section#blockSimple
 					.simple-underline
 						ul#simpleList
 							li.simple-list-item
-								.simple-title.active 正規教室文章
+								.simple-title.active 觀看紀錄
 								.simple-border
 							li.simple-list-item
-								.simple-title 收錄文章
+								.simple-title 收錄音樂
 								.simple-border
 							li.simple-list-item
-								.simple-title 閱讀紀錄
+								.simple-title 我的歡唱
 								.simple-border
 							li.simple-list-item
 								.simple-title 自訂搜尋
 								.simple-border
 						ul#simpleContent
 							li.simple-content-item
-								.sub-title 課程等級
-								include partials/level
-								.sub-title 頻道分類 (複選)
-								include partials/channel_checkbox
 							li.simple-content-item
 							li.simple-content-item
 							li.simple-content-item
 								ul#customContent
 									li.custom-item
-										.borderbox
-											input.custom-text(type='text', placeholder='輸入關鍵字...')
-									li.custom-item
-										.tmp-select.ps5_1
-											.tmp-select-title
-												span 課程等級
-												.icon-arrow
-											.tmp-select-dropscro
-												.tmp-select-itembox
-													include partials/select_level
 										.tmp-select.ps5_2
 											.tmp-select-title 
-												span 頻道名稱
+												span 音樂風格
 												.icon-arrow
 											.tmp-select-dropscro
 												.tmp-select-itembox
 													include partials/channel
-									li.custom-item
 										.borderbox
-											.icon-calendar
-											.datepicker.date
-												input.form-control(type='text', readonly)
-												span.input-group-addon
-											span ~
-											.datepicker.date
-												input.form-control(type='text', readonly)
-												span.input-group-addon
+											input.custom-text(type='text', placeholder='輸入歌名或歌手名字...')
 									li.custom-item
 										.custom-left
 											input.custom-checkbox(type='checkbox' name='record' id='record')
-											label.custom-label(for='record') 做過測驗
+											label.custom-label(for='record') 歡唱紀錄
 						.submit
 							.submit-btn.is-type2(style='display: none') 清除
 							.submit-btn.is-type1 搜尋
@@ -114,64 +93,26 @@ html(lang="en")
 						.title-num
 							span 共30筆
 					ul#list
-						// 文章的分類用色對照 :
-							is-c1 政治國際
-							is-c2 產業科技
-							is-c3 財經社會
-							is-c4 淺談職場
-							is-c5 生活消費
-							is-c6 文化藝術
-							is-c7 旅遊娛樂
-							is-c8 運動健康
-							is-c9 日常對話
-							is-c10 寫作賞析
+						// 音樂的分類用色對照 :
+							is-c1 曲風一
+							is-c2 曲風二
+							is-c3 曲風三
+							is-c4 曲風四
 						include partials/item
 						li.item.is-empty 沒有符合此搜尋的結果
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
-						include partials/item
 						include partials/item
 				.toTop
 					.icon-top
 				.loading
 					img(src='./images/loading.gif')
-			// #content.is-empty
+			//#content.is-empty
 				.content-inner
 					.empty 沒有符合此搜尋的結果
 					.empty 請於左方重新輸入條件
 			// 搜尋「沒有結果」時的介面 ^^^
 			// 搜尋「有結果」時的介面 vvv
 			#content
-				.content-inner
-					.content-main
-						.c-top
-							.c-sort 政治國際
-							.c-time 2020/01/30
-							.c-box
-								.c-left
-									.c-ch
-										span.c-level B1
-										|美國文學經典美國文學經典美國文學經典美國文學經典美國文學經典美國文學經典美國文學經典美國文學經典美國文學經典美國文學經典
-									.c-en Classic American Literature - "The Monkey's Paw"	
-								.c-right(style='background-image: url(./images/demo/3.jpg)')
-						.c-middle
-							.lanbox
-								.lanbox-art
-									include partials/article
-									include partials/article
-								.lanbox-btn
-									.lanbox-icon
-									
-
-					.btn-cta 進入學習
+				iframe(src='https://test.funday.asia/NewMylessonmobile/MusicBox/musicBoxk.asp?musicNo=835&ispc=1')
 
 //- NEW STUDY ####################################
 //- 變數未設定值，如「let i」，console 的值為「undefined」 (顯示則會作 NaN)

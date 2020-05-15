@@ -31,23 +31,24 @@
 		margin: 0
 
 .item-img
-	width: 100px
+	width: 170px
 	background:
-		size: cover
+		size: 155px auto
 		position: center
 	border-radius: 10px 0 0 10px
 
 // -----------------------------------
 .box1
-	padding: 10px 12px 22px
+	padding: 10px 12px
 	width: calc( 100% - 105px + 5px)
 	margin:
 		left: -5px
 
 .box
-	overflow: hidden
+	// overflow: hidden
+	min-height: 15px
 	margin:
-		bottom: 7px
+		bottom: 3px
 	&:last-child
 		margin: 0
 
@@ -88,6 +89,8 @@
 		size: 1.1875rem
 		weight: bold
 	color: #000
+	// overflow: visible
+	max-height: 45px
 
 .level
 	display: inline-block
@@ -95,12 +98,13 @@
 
 .title
 	@extend %row2
-	line-height: 1.2
+	line-height: 1.15
 //
 .sort
 	font-size: 1rem
 	margin:
 		right: 8px
+	color: #9b9b9b
 
 .group
 	font:
@@ -202,20 +206,12 @@ $p1: is-c1, $c01
 $p2: is-c2, $c02
 $p3: is-c3, $c03
 $p4: is-c4, $c04
-$p5: is-c5, $c05
-$p6: is-c6, $c06
-$p7: is-c7, $c07
-$p8: is-c8, $c08
-$p9: is-c9, $c09
-$p10: is-c10, $c10
-@each $selector, $color in $p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9, $p10
+@each $selector, $color in $p1, $p2, $p3, $p4
 	.item.#{$selector}
 		border-color: #{$color}
 		&.active
 			.item-side
 				box-shadow: 0 0 0 5px #{$color} inset
-		.sort, .group
-			color: #{$color}
 
 @media screen and (max-width: 1440px) and (min-width: 768px)
 	.box2-border

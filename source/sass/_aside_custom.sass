@@ -8,12 +8,15 @@
 	display: flex
 	align-items: center
 	height: 32px
+	width: calc( 100% - #{$w-ps-b} - #{$m-select} )
 	border:
 		radius: 16px
 	border: solid 1px #999
 	background-color: #fff
 	padding:
 		left: 16px
+	margin:
+		left: $w-ps-b + $m-select
 
 .custom-text
 	border: none
@@ -67,6 +70,7 @@
 	user-select: none
 	cursor: pointer
 	margin-left: 8px
+	display: none
 
 .is-type1
 	background-color: $c-gray1
