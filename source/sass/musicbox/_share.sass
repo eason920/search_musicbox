@@ -1,5 +1,12 @@
 @import 'share/mixin_extend'
+// ====================================
+// == VAR v
+// ====================================
+$w-usual: calc( 100% - 180px )
 
+// ====================================
+// == START v
+// ====================================
 #header
 	display: none
 
@@ -7,7 +14,7 @@
 	height: 12px!important
 
 #all
-	width: calc( 100% - 120px )
+	width: $w-usual
 
 #mep_0,
 .mejs-mediaelement
@@ -17,3 +24,43 @@
 
 .mejs-mediaelement
 	@include video
+
+// ====================================
+// == SENTENCE v
+// ====================================
+.sentence
+	// height: auto!important
+	margin-top: 0!important
+
+.sentence-title, .sentence-ch, .sentence-en
+	line-height: 1
+
+.sentence-title,
+.sentence-en
+	font-size: 1.3rem!important
+
+.sentence-title + .sentence-title
+	// margin-top: 5px!important
+
+.sentence-ch
+	font-size: 1rem!important
+	margin-top: .4rem!important
+
+
+// @media screen and (max-width: 1440px) < err
+@media screen and (max-width: 1019px)
+	html
+		font-size: 13px
+
+	.sentence
+		padding: .65rem 0
+		height: 60px!important
+
+// @media screen and (min-width: 1441px) < err
+@media screen and (min-width: 1020px)
+	html
+		font-size: 20px
+
+	.sentence
+		padding: 1rem 0
+		height: 105px!important

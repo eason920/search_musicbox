@@ -1432,30 +1432,23 @@ $('.mejs-controls').css('display','none')
 				var tmp =((Math.round($("#player1")[0].player.getCurrentTime()) / Math.round(videoDuration)).toFixed(2))*100
 				$("#playProgress").css("width",tmp+"%")
 
+				var lrcContentHeight=parseInt(($("#lrcContent").outerHeight()/(75+20)/2))
 
-				// org hh = 75 + 20
-				const ww = $(window).width();
-				let hh;
-				if( ww <= 1019 ){
-					// hh = 76.88 - 4 - 10
-					hh = 76.88 + 4 + 14
-				}else{
-					hh = 145
-				};
-				console.log('hh is', hh);
-				
-
-				var lrcContentHeight=parseInt(($("#lrcContent").outerHeight()/(hh)/2))
+				//alert($("#lrcContent").css('height'))
 				for( i=0;i<=mp3sec.length;++i ){
+
 					if( parseFloat($("#player1")[0].player.getCurrentTime()) > parseFloat($(".sentence:eq("+(i)+")").attr("data-start") ) ) {
+						
 						var data_end = ""
 						if ( (i+1) >= mp3sec.length ){
 							data_end = videoDuration
 						}else{
 							data_end = $(".sentence:eq("+(i+1)+")").attr("data-start")
 						}
+						
 						if( ( parseFloat($("#player1")[0].player.getCurrentTime()) < parseFloat( data_end ) )  && ( lastSentence != i) ){ 
 							lastSentence = i 
+							
 							if( ($('.repeat-icon').attr('data-value')=='1') && ((i-1)>0) && repeatNo==0 ){
 								$("#player1")[0].player.setCurrentTime(mp3sec[i-2])
 								if(audioPlayChk()){
@@ -1465,13 +1458,16 @@ $('.mejs-controls').css('display','none')
 								lastSentence = i-1
 								
 							}else{
+
+								
+									
 									if(ScrollStatus==0){
 										//console.log(i)
 										$(".sentence").removeClass('highlight')
 										$(".sentence").removeClass('highlightF')
 										if(i<mp3sec.length){
 											if(isiOS){
-												$("#lrcContent").animate({ "scrollTop": parseFloat($(".sentence:eq("+(i)+")").height()+20)*(i-lrcContentHeight)+60+(hh) });
+												$("#lrcContent").animate({ "scrollTop": parseFloat($(".sentence:eq("+(i)+")").height()+20)*(i-lrcContentHeight)+60+(75+20) });
 											}else{
 												$("#lrcContent").animate({ "scrollTop": parseFloat($(".sentence:eq("+(i)+")").height()+20)*(i-lrcContentHeight)+60 });
 											}
@@ -1524,10 +1520,6 @@ $('.mejs-controls').css('display','none')
 			premp3sec = nowmp3sec
 			bool_open = true
 		}
-
-		$('#lrcContent').scroll(function(){
-			console.log( 'st = ' ,$(this).scrollTop() );
-		});
 	
 
 		if(videoPause==false){
