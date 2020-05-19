@@ -28,10 +28,6 @@ $w-usual: calc( 100% - 180px )
 // ====================================
 // == SENTENCE v
 // ====================================
-.sentence
-	// height: auto!important
-	margin-top: 0!important
-
 .sentence-title, .sentence-ch, .sentence-en
 	line-height: 1
 
@@ -39,28 +35,22 @@ $w-usual: calc( 100% - 180px )
 .sentence-en
 	font-size: 1.3rem!important
 
-.sentence-title + .sentence-title
-	// margin-top: 5px!important
-
 .sentence-ch
 	font-size: 1rem!important
-	margin-top: .4rem!important
 
+.sentence-ch
+	margin-top: .4rem!important
+	
+@media screen and (max-width: 767px)
+	html
+		font-size: 16px
 
 // @media screen and (max-width: 1440px) < err
-@media screen and (max-width: 1019px)
+@media screen and (max-width: 1019px) and (min-width: 768px)
 	html
 		font-size: 13px
-
-	.sentence
-		padding: .65rem 0
-		height: 60px!important
 
 // @media screen and (min-width: 1441px) < err
 @media screen and (min-width: 1020px)
 	html
 		font-size: 20px
-
-	.sentence
-		padding: 1rem 0
-		height: 105px!important

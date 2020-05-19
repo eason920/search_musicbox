@@ -3,6 +3,8 @@
 .playerbar
 	max-width: 1000px!important
 
+#lrcContent
+	position: relative
 
 // ====================================
 // == time bar
@@ -49,5 +51,78 @@
 .Countdown-slogn
 	margin-bottom: 20px!important
 
-#img1
-	width: 300px!important
+// ====================================
+// == DR BOX v
+// ====================================	
+.DrWord
+	max-width: 1000px
+	width: 100%
+
+@media screen and (min-width: 768px) and (max-width: 1019px)
+	.DrWord
+		left: 0
+
+	.Dr_title, .Dr_content
+		width: calc(100% - 50px)
+		margin: 0
+		padding-left: 25px
+
+// ====================================
+// == SCROLL BAR v
+// ====================================
+::-webkit-scrollbar
+	width: 6px
+	background-color: white
+
+::-webkit-scrollbar-thumb
+	background-color: white
+	border-radius: 3px
+
+::-webkit-scrollbar-track
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3)
+	background-color: #999
+	border-radius: 3px
+
+// ====================================
+// == BREAK POINT v
+// ====================================
+.sentence
+	box-sizing: border-box
+
+.sentence-ch
+	margin-top: .4rem!important
+
+@media screen and (max-width: 767px)
+	.sentence
+		height: 75px!important
+
+// @media screen and (max-width: 1440px) < err
+@media screen and (max-width: 1019px) and (min-width: 768px)
+	.sentence
+		padding: .65rem 0
+		height: auto!important 
+		margin-top: 0!important
+
+// @media screen and (min-width: 1441px) < err
+@media screen and (min-width: 1020px)
+	.sentence
+		padding: 1rem 0
+		height: auto!important
+		margin-top: 0!important
+
+// -----------------------------------
+// -----------------------------------
+@media screen and (min-width: 768px) and (max-width: 1019px)
+	#img1
+		width: 150px!important
+
+@media screen and (min-width: 1020px)
+	#img1
+		width: 230px!important
+
+// ====================================
+// == ICON CURSOR v
+// ====================================
+.repeat-icon, .mute-icon, .preArrow-icon, .player-icon, .nextArrow-icon,
+.upload-icon, .record-icon, .sentence
+	cursor: pointer

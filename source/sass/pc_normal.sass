@@ -81,13 +81,27 @@
 	display: flex
 	justify-content: center
 	align-items: center
+	transform: translateY(9px)
 
+// ====================================
+// == sentence v
+// ====================================
 .sentence
 	margin: 0 !important
 	position: static!important
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
 
 .sentence-ch
 	color: #ccc!important
+	margin-top: 1rem!important
+
+@media screen and (max-width: 1019px) and (min-width: 768px)
+	.sentence-en,
+	.sentence-ch
+		font-size: 1.5rem!important
 
 // ====================================
 // == all btn

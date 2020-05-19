@@ -168,15 +168,15 @@ html{
 	height:25px;
 }
 .sentence{
-    position: relative;
-    width: 100%;
-    height: 75px;
+	position: relative;
+	width: 100%;
+	height: 75px;
 	margin:20px 0 0 0;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: rgb(34, 34, 34);
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: rgb(34, 34, 34);
 }
 .SentenceMask{
 	display: block; position:absolute;  width: 100%; background-color: rgb(34, 34, 34);margin-top:50px;/*color: #FFFFFF;opacity:0.3;*/color:#696969;	
@@ -201,7 +201,7 @@ html{
 }
 .DrWord{
 	width: 100vw;
-	height: calc(100vh * 0.35);
+	height: calc(100vh * 0.45);
 	opacity: 0.85;
 	border-radius: 20px 20px 0 0;
 	box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.25);
@@ -490,7 +490,8 @@ var rec_state='0';
 var u = navigator.userAgent;
 var mFile='';
 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-var isiOS = u.match(/(iphone);?/i)
+var isiOS = u.match(/(iphone);?/i);
+var ispc = !u.match(/iphone|ipad|android/i);
 
 function PlayListMode(){
 	if($("#PlayMode").val()==0){ //歡唱
@@ -576,13 +577,13 @@ $('.mejs-controls').css('display','none')
 
 	$(document).on('click', '.repeat-icon', function(event){
 		if($(this).attr("data-value")=="0"){
-			$(this).attr("data-value","1")
+			$(this).attr("data-value","1").css('backgroundColor','white');
 			$("#modeTxt").text("單句重複開啟")
 			$("#modeTxt").attr("class"," ")
 			setTimeout(function(){ $("#modeTxt").toggleClass("animate-showModeTxt")}, 100);
 			$('.repeat-icon img').attr('src','svg/btn-repeat-on.svg')
 		}else{		
-			$(this).attr("data-value","0")
+			$(this).attr("data-value","0").removeAttr('style');
 			$("#modeTxt").text("單句重複關閉")
 			$("#modeTxt").attr("class"," ")
 			setTimeout(function(){ $("#modeTxt").toggleClass("animate-showModeTxt")}, 100);
@@ -1431,21 +1432,9 @@ $('.mejs-controls').css('display','none')
 				$("#playEnd").text(minEnd+":"+secEnd)
 				var tmp =((Math.round($("#player1")[0].player.getCurrentTime()) / Math.round(videoDuration)).toFixed(2))*100
 				$("#playProgress").css("width",tmp+"%")
-
-
-				// org hh = 75 + 20
-				const ww = $(window).width();
-				let hh;
-				if( ww <= 1019 ){
-					// hh = 76.88 - 4 - 10
-					hh = 76.88 + 4 + 14
-				}else{
-					hh = 145
-				};
-				console.log('hh is', hh);
 				
-
-				var lrcContentHeight=parseInt(($("#lrcContent").outerHeight()/(hh)/2))
+				const vMobi = 75 + 20;
+				var lrcContentHeight=parseInt(($("#lrcContent").outerHeight()/(vMobi)/2));
 				for( i=0;i<=mp3sec.length;++i ){
 					if( parseFloat($("#player1")[0].player.getCurrentTime()) > parseFloat($(".sentence:eq("+(i)+")").attr("data-start") ) ) {
 						var data_end = ""
@@ -1466,15 +1455,26 @@ $('.mejs-controls').css('display','none')
 								
 							}else{
 									if(ScrollStatus==0){
-										//console.log(i)
 										$(".sentence").removeClass('highlight')
 										$(".sentence").removeClass('highlightF')
 										if(i<mp3sec.length){
-											if(isiOS){
-												$("#lrcContent").animate({ "scrollTop": parseFloat($(".sentence:eq("+(i)+")").height()+20)*(i-lrcContentHeight)+60+(hh) });
+											let st = 0;
+											if( ispc ){
+												// pc
+												for( j = 0; j< i; j++){
+													st = st + $('.sentence').eq(j).innerHeight();
+												};
+												const cut = $('.sentence').eq(i-1).innerHeight();
+												$("#lrcContent").animate({ "scrollTop": st - cut });
 											}else{
-												$("#lrcContent").animate({ "scrollTop": parseFloat($(".sentence:eq("+(i)+")").height()+20)*(i-lrcContentHeight)+60 });
+												// mobi & pad
+												if(isiOS){
+													$("#lrcContent").animate({ "scrollTop": parseFloat($(".sentence:eq("+(i)+")").height()+20)*(i-lrcContentHeight)+60+(vMobi) });
+												}else{
+													$("#lrcContent").animate({ "scrollTop": parseFloat($(".sentence:eq("+(i)+")").height()+20)*(i-lrcContentHeight)+60 });
+												}
 											}
+
 										}
 
 										$(".sentence:eq("+(i)+")").addClass('highlight');
@@ -1524,11 +1524,6 @@ $('.mejs-controls').css('display','none')
 			premp3sec = nowmp3sec
 			bool_open = true
 		}
-
-		$('#lrcContent').scroll(function(){
-			console.log( 'st = ' ,$(this).scrollTop() );
-		});
-	
 
 		if(videoPause==false){
 			$('.player-icon').attr("data-value","1")	
