@@ -298,7 +298,7 @@
       <!-- 搜尋「沒有結果」時的介面 ^^^-->
       <!-- 搜尋「有結果」時的介面 vvv-->
       <div id="content">
-        <iframe src="https://test.funday.asia/NewMylessonmobile/MusicBox/musicBox.asp?musicNo=835&amp;ispc=1"></iframe>
+        <iframe src="https://test.funday.asia/NewMylessonmobile/MusicBox/musicBox.asp?musicNo=835&rwd"></iframe>
       </div>
     </div>
   </body>
