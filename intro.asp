@@ -131,11 +131,6 @@
                 <div class="box">
                   <div class="left">
                     <div class="sort">曲風二</div>
-                    <div class="stars">
-                      <div class="icon-star"></div>
-                      <div class="icon-star-empty"></div>
-                      <div class="icon-star-empty"></div>
-                    </div>
                   </div>
                   <div class="right">
                     <div class="date">2020/01/29</div>
@@ -157,12 +152,7 @@
               <div class="box1">
                 <div class="box">
                   <div class="left">
-                    <div class="sort">曲風二</div>
-                    <div class="stars">
-                      <div class="icon-star"></div>
-                      <div class="icon-star-empty"></div>
-                      <div class="icon-star-empty"></div>
-                    </div>
+                    <div class="sort">曲風三</div>
                   </div>
                   <div class="right">
                     <div class="date">2020/01/29</div>
@@ -184,12 +174,7 @@
               <div class="box1">
                 <div class="box">
                   <div class="left">
-                    <div class="sort">曲風二</div>
-                    <div class="stars">
-                      <div class="icon-star"></div>
-                      <div class="icon-star-empty"></div>
-                      <div class="icon-star-empty"></div>
-                    </div>
+                    <div class="sort">曲風四</div>
                   </div>
                   <div class="right">
                     <div class="date">2020/01/29</div>
@@ -238,11 +223,6 @@
                 <div class="box">
                   <div class="left">
                     <div class="sort">曲風二</div>
-                    <div class="stars">
-                      <div class="icon-star"></div>
-                      <div class="icon-star-empty"></div>
-                      <div class="icon-star-empty"></div>
-                    </div>
                   </div>
                   <div class="right">
                     <div class="date">2020/01/29</div>
@@ -264,12 +244,7 @@
               <div class="box1">
                 <div class="box">
                   <div class="left">
-                    <div class="sort">曲風二</div>
-                    <div class="stars">
-                      <div class="icon-star"></div>
-                      <div class="icon-star-empty"></div>
-                      <div class="icon-star-empty"></div>
-                    </div>
+                    <div class="sort">曲風三</div>
                   </div>
                   <div class="right">
                     <div class="date">2020/01/29</div>
@@ -291,12 +266,7 @@
               <div class="box1">
                 <div class="box">
                   <div class="left">
-                    <div class="sort">曲風二</div>
-                    <div class="stars">
-                      <div class="icon-star"></div>
-                      <div class="icon-star-empty"></div>
-                      <div class="icon-star-empty"></div>
-                    </div>
+                    <div class="sort">曲風四</div>
                   </div>
                   <div class="right">
                     <div class="date">2020/01/29</div>

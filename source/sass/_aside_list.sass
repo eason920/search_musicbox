@@ -61,6 +61,7 @@
 .left, .right
 	display: flex
 	align-items: center
+	font-weight: bold
 
 //
 .teacher
@@ -209,6 +210,8 @@ $p4: is-c4, $c04
 @each $selector, $color in $p1, $p2, $p3, $p4
 	.item.#{$selector}
 		border-color: #{$color}
+		.sort
+			color: #{$color}
 		&.active
 			.item-side
 				box-shadow: 0 0 0 5px #{$color} inset
