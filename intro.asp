@@ -30,10 +30,10 @@
         <section id="blockSimple">
           <div class="simple-underline">
             <ul id="simpleList">
-              <li class="simple-list-item">
+              <!--li class="simple-list-item">
                 <div class="simple-title active">觀看紀錄</div>
                 <div class="simple-border"></div>
-              </li>
+              </li-->
               <li class="simple-list-item">
                 <div class="simple-title">收錄音樂</div>
                 <div class="simple-border"></div>
@@ -48,7 +48,6 @@
               </li>
             </ul>
             <ul id="simpleContent">
-              <li class="simple-content-item"></li>
               <li class="simple-content-item"></li>
               <li class="simple-content-item"></li>
               <li class="simple-content-item">
