@@ -207,7 +207,11 @@ $p1: is-c1, $c01
 $p2: is-c2, $c02
 $p3: is-c3, $c03
 $p4: is-c4, $c04
-@each $selector, $color in $p1, $p2, $p3, $p4
+$p5: is-c5, $c05
+$p6: is-c6, $c06
+$p7: is-c7, $c07
+$p8: is-c8, $c08
+@each $selector, $color in $p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8
 	.item.#{$selector}
 		border-color: #{$color}
 		.sort
