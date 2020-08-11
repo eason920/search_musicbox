@@ -1,4 +1,11 @@
-$(function(){
+var PG = 1;
+var Rcount = 0;
+var SearchStr = '';
+var Searchtimeout = '';
+var clickCheck = ''
+
+$(function () {
+
 	// SEARCH INPUT v
 	$('.simple-list-item').click(function(){
 		const max = $('.simple-list-item').length - 1;
@@ -12,23 +19,24 @@ $(function(){
 			marginTop = '-40px';
 		}else{
 			$('.submit-btn').hide();
-		};
+        };
+        
+        (i == 0) ? ResetDefault('Collect') : null;
+        (i == 1) ? ResetDefault('Recording') : null;
+        (i == 2) ? $('.submit-btn.is-type1').attr('data-value', 'Keyword') : null;
+
 		$('.submit').css({marginTop});
 		$('.simple-content-item').hide();
 		$('.simple-content-item').eq(i).show();
-	});
+    });
 
-	// CALENDAR CUSTOMER v
-	$(function () {
-		$('.datepicker').datepicker({ 
-			autoclose: true, 
-			todayHighlight: true,
-			language: 'zh-CN',
-			format: 'yyyy / mm / dd'
-		}).datepicker('update', new Date());
+    // Click Search Button
+    $('.submit-btn.is-type1').on('click', function () {
+        ResetDefault($('.submit-btn.is-type1').attr('data-value'))
+    })
 
-		$('.form-control').val('YYYY / MM / DD');
-	});
+    //預設第一個按鈕
+    $('.simple-list-item').eq(0).trigger('click');
 
 	// 左列的 KEYBOARD 選上/下一個 v
 	$('#blockList').on('mouseenter click', function(){
@@ -69,9 +77,9 @@ $(function(){
 			}
 		}
 
-		$('.item').removeClass('active').eq(itemIndex).addClass('active');
+        $('.item').removeClass('active').eq(itemIndex).addClass('active');
+        $('.item').eq(itemIndex).trigger('click')
 	})
-
 
 	$('body').on('click', '.item', function(){
 		// 此 item 加 class 'active' (框加粗) v
@@ -90,9 +98,8 @@ $(function(){
 		$('.lanbox-art').css({height});
 	});
 
-	// 接上方 click 事件，以 click 預設右側的 skin v
-	$('body').find('.item').eq(0).click();
-
+	//// 接上方 click 事件，以 click 預設右側的 skin v
+	//$('body').find('.item').eq(0).click();
 
 	// GO TO TOP
 	$('.toTop').click(function(){
@@ -100,29 +107,51 @@ $(function(){
 	});
 
 	$('.toTop').hide();
-	
-	$('aside').on('scroll', function(){
-		const start = 35 + $('#blockSimple').outerHeight(true);
-		const st = $(this).scrollTop();
-		if( st >= start ){
-			$('.toTop').fadeIn();
-			$('.is-result').addClass('is-fixed');
-		}else{
-			$('.toTop').fadeOut();
-			$('.is-result').removeClass('is-fixed');
-		};
-	});
+
+    $('aside').on('scroll', function () {
+        const start = 35 + $('#blockSimple').outerHeight(true);
+        const st = $(this).scrollTop();
+        const scrollHeight = $('#list').height();
+        const windowHeight = $(this).height();
+
+        if (st >= start) {
+            $('.toTop').fadeIn();
+            $('.is-result').addClass('is-fixed');
+        } else {
+            $('.toTop').fadeOut();
+            $('.is-result').removeClass('is-fixed');
+        };
+
+        //console.log(st+'+'+windowHeight+'='+(scrollHeight+35))
+        if (st + windowHeight >= (scrollHeight + 35)) {
+
+            if (Searchtimeout == '') {
+                toSearch()
+                Searchtimeout = 1
+            }
+        }
+    })
 
 	$('.lanbox-icon').click(function(){
 		$(this).toggleClass('active');
-	});
+    });
+
+    $('.lanbox-icon').click(function () {
+        $(this).toggleClass('active');
+
+        if ($(this).hasClass('active')) {
+
+            $('#art_player')[0].play();
+        } else {
+            $('#art_player')[0].pause();
+        }
+    });
 
 	new PerfectScrollbar('aside');
 
 	// ====================================
 	// == 清空自訂搜尋 v
 	// ====================================
-	// $('.simple-list-item').eq(3).click();
 
 	const customText2 = $('.ps5_2 .tmp-select-title span').text();
 	$('.is-type2').click(function(){
@@ -133,3 +162,205 @@ $(function(){
 		$check.is(':checked') ? $check.click() : null;
 	});
 });
+
+const ResetDefault = target => {
+
+    PG = 1
+    Rcount = 0
+    SearchStr = target
+    location.hash = SearchStr
+    toSearch()
+}
+
+var keywordStr = ''
+var kclf = ''
+var Krecord = ''
+
+const toSearch = () => {
+
+    $('.loading').fadeIn();
+
+    var Surl = ''
+    var Sdata = ''
+
+    keywordStr = ''
+    kclf = ''
+    Krecord = ''
+
+    keywordStr = $('#keyword').val()
+    kclf = $('.ps5_2 > .tmp-select-title > span').attr('data-value')
+    $('input:checkbox:checked[name="record"]').each(function () {
+        Krecord = `${this.value}`
+    });
+
+    var toDo = SearchStr
+
+    switch (SearchStr) {
+        case 'Collect':
+        case 'Recording':  
+            Sdata = { toDo: toDo, PG: PG }
+            Surl = '../musicbox/data/Search-Record.asp'
+            break;
+        case 'Keyword':
+            Sdata = { toDo: toDo, PG: PG, keywordStr: keywordStr, kclf: kclf, Krecord: Krecord }
+            Surl = '../musicbox/data/Search-Keyword.asp'
+            break;
+    }    
+
+    setTimeout(function () {
+
+        $.ajax({
+            type: 'POST',
+            url: Surl,
+            data: Sdata,
+            cache: false,
+            dateType: 'json',
+            success: function (data) {
+
+                //alert('got');
+                //alert(JSON.stringify(data));
+
+                var Str = ''
+                var Classify_css = ""
+                var firstID = ""
+
+                Searchtimeout = ''
+
+                if (PG == 1)
+                    $('.block-title > span').html(`搜尋結果：<b>(以下結果取得自 ${data.info.SearchTime})</b>`)
+
+                if (PG == 1 && data.data.length == 0) {
+
+                    Str = `<li class="item is-empty">沒有符合此搜尋的結果</li>`
+                    $('#list').html(Str)
+                    Rcount = 0
+                    ContentEmpty()
+                }
+
+                $.each(data.data, function (i, item) {
+
+                    if (item.song_id == '0') {
+                        Str = `<li class="item is-empty">沒有符合此搜尋的結果</li>`
+                        if (PG == 1 && i == 0) {
+                            $('#list').html(Str)
+                        }
+                        Rcount = 0
+                        ContentEmpty(item)
+                    } else {
+
+                        switch (item.c_classify) {
+                            case 'Pop流行樂':
+                                Classify_css = "is-c1";
+                                break;
+                            case 'EDM電音':
+                                Classify_css = "is-c2";
+                                break;
+                            case 'Hip-hop嘻哈樂':
+                                Classify_css = "is-c3";
+                                break;
+                            case 'Rap饒舌樂':
+                                Classify_css = "is-c4";
+                                break;
+                            case 'R&B節奏藍調':
+                                Classify_css = "is-c5";
+                                break;
+                            case 'Rock搖滾音樂':
+                                Classify_css = "is-c6";
+                                break;
+                            case 'Jazz爵士樂':
+                                Classify_css = "is-c7";
+                                break;
+                            case 'Folk/Country民歌/鄉村':
+                                Classify_css = "is-c8";
+                                break;
+                            default:
+                                Classify_css = "is-c1";
+                        }
+
+                        Str = `<li class="item ${Classify_css}" id="${item.song_id}" >
+                                <div class="item-img" style="background-image: url(https://img.youtube.com/vi/${item.imgfilename}/1.jpg)"></div>
+								<div class="box1">
+								    <div class="box">
+									    <div class="left">
+                                            <div class="sort">${item.c_classify}</div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="date">${item.publish_date}</div>
+                                        </div>									
+								    </div>
+                                    <div class="box">
+                                        <div class="title">${item.ch_subject}</div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="left">
+                                            <div class="sort">${item.singer}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-side"></div>
+                                ${item.featured == 1 ? '<div class="icon-test">歡唱 <div class="icon-check"></div>' : ''}
+							</li>`
+
+                        Rcount++
+
+                        if (PG == 1 && i == 0) {
+
+                            $('#list').html(Str)
+                            firstID = item.song_id
+
+                        } else {
+                            $('#list').append(Str)
+                        }
+
+                        $('#' + item.song_id).on('click', function () {
+                            Content(item)
+                        })
+
+                        $('.title-num > span').html(`共${Rcount}筆`)
+                    }
+                })
+
+                if (firstID != "") {
+                    $('#' + firstID).trigger('click')
+                }
+
+                PG++
+
+                $('.loading').fadeOut();
+
+                $('.box2-item').on('click', function () {
+
+                    if ($(this).attr("data-value") != '') {
+                        if (clickCheck != $(this).attr("data-value")) {
+                            window.open($(this).attr("data-value"))
+                            clickCheck = $(this).attr("data-value")
+                        }
+                    }
+                })
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //alert(XMLHttpRequest.responseText);
+                alert("error:" + errorThrown)
+            }
+
+        });
+    }, 10)
+}
+
+const ContentEmpty = () => {
+    $('#content').attr('class', 'is-empty')
+    $('#music_palyer').hide()
+    $('#content').append(`<div class="content-inner"><div class="empty">沒有符合此搜尋的結果</div><div class="empty">請於左方重新輸入條件</div></div>`)
+    //$('.content-inner > .empty').remove()
+    //$('.content-inner').append(`<div class="empty">沒有符合此搜尋的結果</div><div class="empty">請於左方重新輸入條件</div>`)
+}
+
+const Content = contentJson => {
+
+    $('#content').removeClass('is-empty')
+    $('.content-inner').remove()
+    $('#music_palyer').attr('src', 'https://funday.asia/NewMylessonmobile/MusicBox/musicBox.asp?musicNo=' + contentJson.song_id + '&rwd')  
+    $('#music_palyer').show()
+    
+}
+
