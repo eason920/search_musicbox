@@ -17,12 +17,12 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>search Musicbox</title>
-    <link href="./css/musicbox.css" rel="stylesheet" type="text/css"/>
+    <link href="./css/musicbox.css?1090812" rel="stylesheet" type="text/css"/>
     <link href="../assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
     <link href="../assets/plugins/datepicker_bs/datepicker.css" rel="stylesheet" type="text/css"/>
     <script src="../assets/plugins/jquery/jquery-1.12.4-min.js"></script>
     <script src="./js/select.js"></script>
-    <script src="./js/musicbox.js"></script>
+    <script src="./js/musicbox.js?1090812"></script>
     <script src="../assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script>
     <script src="../assets/plugins/datepicker_bs/bootstrap-datepicker.js"></script>
   </head>
@@ -54,6 +54,7 @@
               </li>
             </ul>
             <ul id="simpleContent">              
+              <li class="simple-content-item"></li>
               <li class="simple-content-item"></li>
               <li class="simple-content-item"></li>
               <li class="simple-content-item">
