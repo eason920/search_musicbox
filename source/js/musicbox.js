@@ -310,7 +310,7 @@ const toSearch = () => {
 						}
 
 						Str = `<li class="item ${Classify_css}" id="${item.song_id}" >
-                                <div class="item-img" style="background-image: url(https://img.youtube.com/vi/${item.imgfilename}/1.jpg)"></div>
+                                <div class="item-img" style="background-image: url(${item.imgfilename})"></div>
 								<div class="box1">
 								    <div class="box">
 									    <div class="left">
