@@ -1,3 +1,5 @@
+const isMobi = /android|iphone/i.test(navigator.userAgent);
+
 var PG = 1;
 var Rcount = 0;
 var SearchStr = '';
@@ -309,7 +311,7 @@ const toSearch = () => {
 																Classify_css = "is-c1";
 												}
 
-												Str = `<li class="item ${Classify_css}" id="${item.song_id}" >
+												Str = `<li class="item ${Classify_css}" id="${item.song_id}" data-mb="${item.song_id}">
 												<div class="item-img" style="background-image: url(${item.imgfilename})"></div>
 												<div class="box1">
 													<div class="box">
@@ -345,15 +347,20 @@ const toSearch = () => {
 											}
 
 											$('#' + item.song_id).on('click', function() {
+												if( !isMobi ){
 													Content(item)
+												}else{
+													const link = $(this).attr("data-mb");
+													window.open("https://funday.asia/NewMylessonmobile/MusicBox/musicBox.asp?musicNo=" + link);
+												}
 											})
 
 											$('.title-num > span').html(`共${Rcount}筆`)
 										}
 								})
 
-								if (firstID != "") {
-										$('#' + firstID).trigger('click')
+								if (firstID != "" && !isMobi ) {
+									$('#' + firstID).trigger('click')
 								}
 
 								PG++
