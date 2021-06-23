@@ -18,20 +18,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>search Musicbox</title>
     <link href="./css/musicbox.css?<%=now%>" rel="stylesheet" type="text/css"/>
+    <link href="./css/musicbox_awd.css?<%=Timer()%>" rel="stylesheet" type="text/css"/>
+    <link href="../css/awd.css?<%=now()%>" rel="stylesheet" type="text/css"/>
     <link href="../assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
     <link href="../assets/plugins/datepicker_bs/datepicker.css" rel="stylesheet" type="text/css"/>
     <script src="../assets/plugins/jquery/jquery-1.12.4-min.js"></script>
-    <script src="./js/select.js"></script>
+    <script src="../js/select_awd.js"></script>
     <script src="./js/musicbox_awd.js?<%=now%>"></script>
     <script src="../assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script>
     <script src="../assets/plugins/datepicker_bs/bootstrap-datepicker.js"></script>
   </head>
   <body>
+    <!--#include virtual="search/common/module_mb_header_for_search.asp"-->
     <div id="wrapperMain">
       <aside>
         <section id="blockLabel">
-            <p hidden id="function_id">musicbox</p>
-            <!--#include virtual="search/common/menu_search_awd.inc"-->
+          <p hidden id="function_id">musicbox</p>
+          <!--#include virtual="search/common/menu_search_awd.asp"-->
         </section>
         <section id="blockSimple">
           <div class="simple-underline">

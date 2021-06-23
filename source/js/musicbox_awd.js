@@ -44,9 +44,11 @@ $(function() {
 		$('.simple-list-item').eq(0).trigger('click');
 
 		// 左列的 KEYBOARD 選上/下一個 v
-		$('#blockList').on('mouseenter click', function() {
+		if( !isMobi ){
+			$('#blockList').on('mouseenter click', function() {
 				$('#forKeydown').focus();
-		});
+			});
+		}
 
 		let itemIndex;
 		$('#forKeydown').on('keydown', function(e) {
@@ -160,7 +162,9 @@ $(function() {
 				}
 		});
 
-		new PerfectScrollbar('aside');
+		if( !isMobi ){
+			new PerfectScrollbar('aside');
+		};
 
 		// ====================================
 		// == 清空自訂搜尋 v
